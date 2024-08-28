@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <sidebar></sidebar>
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -30,3 +31,12 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+<script lang="ts">
+  import Vue from 'vue';
+  import Sidebar from '@/components/SideBar.vue';
+  export default Vue.extend({
+    components:{
+      Sidebar
+    }
+  })
+</script>
