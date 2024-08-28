@@ -1,228 +1,250 @@
 <template>
-    <div data-component="sidebar">
-        <nav class="main-menu">
-            <ul>
-                <li>
-                    <a href="https://jbfarrow.com">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-                           Community Dashboard
-                        </span>
-                    </a>
-                  
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                        <i class="fa fa-globe fa-2x"></i>
-                        <span class="nav-text">
-                            Global Surveyors
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-comments fa-2x"></i>
-                        <span class="nav-text">
-                            Group Hub Forums
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-camera-retro fa-2x"></i>
-                        <span class="nav-text">
-                            Survey Photos
-                        </span>
-                    </a>
-                   
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-film fa-2x"></i>
-                        <span class="nav-text">
-                            Surveying Tutorials
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book fa-2x"></i>
-                        <span class="nav-text">
-                           Surveying Jobs
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a href="#">
-                       <i class="fa fa-cogs fa-2x"></i>
-                        <span class="nav-text">
-                            Tools & Resources
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                        <span class="nav-text">
-                            Member Map
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                       <i class="fa fa-info fa-2x"></i>
-                        <span class="nav-text">
-                            Documentation
-                        </span>
-                    </a>
-                </li>
-            </ul>
+    <div class="body">
+        <nav id="sidebar">
+            <div id="sidebar_content">
+                <div id="user">
+                    <img src="../assets/avatar.jpg" id="user_avatar" alt="Avatar">
 
-            <ul class="logout">
-                <li>
-                   <a href="#">
-                         <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
-                            Logout
+                    <p id="user_infos">
+                        <span class="item-description">
+                            Fulano de Tal
                         </span>
-                    </a>
-                </li>  
-            </ul>
+                        <span class="item-description">
+                            Lorem Ipsum
+                        </span>
+                    </p>
+                </div>
+
+                <ul id="side_items">
+                    <li class="side-item" v-for="item in menus" :key="item.titulo">
+                        <router-link :to="{ name: item.destino }" class="router-link">
+                            <i :class="item.icone"></i>
+                            <span class="item-description">
+                                {{ item.titulo }}
+                            </span>
+                        </router-link>
+                    </li>
+                </ul>
+
+                <button id="open_btn" @click="abrirFecharMenu">
+                    <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div id="logout">
+                <button id="logout_btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="item-description">
+                        Logout
+                    </span>
+                </button>
+            </div>
         </nav>
+
+        <main>
+            <router-view/>
+        </main>
     </div>
-
 </template>
+
 <style>
-    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-.fa-2x {
-font-size: 2em;
-}
-.fa {
-position: relative;
-display: table-cell;
-width: 60px;
-height: 36px;
-text-align: center;
-vertical-align: middle;
-font-size:20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
+.body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #e3e9f7;
 }
 
-.main-menu {
-background:#212121;
-border-right:1px solid #e5e5e5;
-position:absolute;
-top:0;
-bottom:0;
-height:100%;
-left:0;
-width:60px;
-overflow:hidden;
--webkit-transition:width .05s linear;
-transition:width .05s linear;
--webkit-transform:translateZ(0) scale(1,1);
-z-index:1000;
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    height: 100vh;
+    border-radius: 0px 18px 18px 0px;
+    position: relative;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 2;
 }
 
-.main-menu>ul {
-margin:7px 0;
+#sidebar_content {
+    padding: 12px;
 }
 
-.main-menu li {
-position:relative;
-display:block;
-width:250px;
+#user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
 }
 
-.main-menu li>a {
-position:relative;
-display:table;
-border-collapse:collapse;
-border-spacing:0;
-color:#999;
- font-family: arial;
-font-size: 14px;
-text-decoration:none;
--webkit-transform:translateZ(0) scale(1,1);
--webkit-transition:all .1s linear;
-transition:all .1s linear;
-  
+#user_avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
-.main-menu .nav-icon {
-position:relative;
-display:table-cell;
-width:60px;
-height:36px;
-text-align:center;
-vertical-align:middle;
-font-size:18px;
+#user_infos {
+    display: flex;
+    flex-direction: column;
 }
 
-.main-menu .nav-text {
-position:relative;
-display:table-cell;
-vertical-align:middle;
-width:190px;
-  font-family: 'Titillium Web', sans-serif;
+#user_infos span:last-child {
+    color: #6b6b6b;
+    font-size: 12px;
 }
 
-.main-menu>ul.logout {
-position:absolute;
-left:0;
-bottom:0;
+#side_items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
 }
 
-.no-touch .scrollable.hover {
-overflow-y:hidden;
+.side-item {
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
 }
 
-.no-touch .scrollable.hover:hover {
-overflow-y:auto;
-overflow:visible;
+.side-item.active {
+    background-color: #4f46e5;
 }
 
-a:hover,a:focus {
-text-decoration:none;
+.side-item:hover:not(.active),
+#logout_btn:hover {
+    background-color: #e3e9f7;
 }
 
-nav {
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
--o-user-select:none;
-user-select:none;
+.side-item a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0a;
 }
 
-nav ul,nav li {
-outline:0;
-margin:0;
-padding:0;
-}
-.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
-color:#fff;
-background-color:#000000;
-}
-.area {
-float: left;
-background: #e2e2e2;
-width: 100%;
-height: 100%;
-}
-@font-face {
-  font-family: 'Titillium Web';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+.side-item.active a {
+    color: #e3e9f7;
 }
 
+.side-item a i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+#logout {
+    border-top: 1px solid #e3e9f7;
+    padding: 12px;
+}
+
+#logout_btn {
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-radius: 8px;
+    text-align: start;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#open_btn {
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    background-color: #4f46e5;
+    color: #e3e9f7;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#open_btn_icon {
+    transition: transform .3s ease;
+}
+
+.open-sidebar #open_btn_icon {
+    transform: rotate(180deg);
+}
+
+.item-description {
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width .6s;
+    height: 0px;
+}
+
+#sidebar.open-sidebar {
+    min-width: 15%;
+}
+
+#sidebar.open-sidebar .item-description {
+    width: 150px;
+    height: auto;
+}
+
+#sidebar.open-sidebar .side-item a {
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    z-index: 1;
+    background-color: #f7f7f7;
+}
 </style>
+
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+    name: "SideBar",
+    data(){
+        return{
+            menus:[
+                {
+                    titulo: "DataTable",
+                    icone: "fa-solid fa-chart-line",
+                    destino: "DataTable"
+                },
+                {
+                    titulo: "TreeView",
+                    icone: "fa-solid fa-tree",
+                    destino: "home"
+                },
+            ]
+        }
+    },
+    methods:{
+        abrirFecharMenu(){
+           var sideBar = document.getElementById('sidebar');
+           if(sideBar != null){
+                sideBar.classList.toggle('open-sidebar');
+           }
+        }
+    }
+})
+</script>
