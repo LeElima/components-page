@@ -1,102 +1,54 @@
 <template>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <div class="body">
         <nav id="sidebar">
-        <div id="sidebar_content">
-            <div id="user">
-                <img src="../assets/avatar.jpg" id="user_avatar" alt="Avatar">
-    
-                <p id="user_infos">
-                    <span class="item-description">
-                        Fulano de Tal
-                    </span>
-                    <span class="item-description">
-                        Lorem Ipsum
-                    </span>
-                </p>
+            <div id="sidebar_content">
+                <div id="user">
+                    <img src="../assets/avatar.jpg" id="user_avatar" alt="Avatar">
+
+                    <p id="user_infos">
+                        <span class="item-description">
+                            Fulano de Tal
+                        </span>
+                        <span class="item-description">
+                            Lorem Ipsum
+                        </span>
+                    </p>
+                </div>
+
+                <ul id="side_items">
+                    <li class="side-item" v-for="item in menus" :key="item.titulo">
+                        <router-link :to="{ name: item.destino }" class="router-link">
+                            <i :class="item.icone"></i>
+                            <span class="item-description">
+                                {{ item.titulo }}
+                            </span>
+                        </router-link>
+                    </li>
+                </ul>
+
+                <button id="open_btn" @click="abrirFecharMenu">
+                    <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
-    
-            <ul id="side_items">
-                <li class="side-item active">
-                    <a href="#">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span class="item-description">
-                            Dashboard
-                        </span>
-                    </a>
-                </li>
-    
-                <li class="side-item">
-                    <a href="#">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="item-description">
-                            Usuários
-                        </span>
-                    </a>
-                </li>
-    
-                <li class="side-item">
-                    <a href="#">
-                        <i class="fa-solid fa-bell"></i>
-                        <span class="item-description">
-                            Notificações
-                        </span>
-                    </a>
-                </li>
-    
-                <li class="side-item">
-                    <a href="#">
-                        <i class="fa-solid fa-box"></i>
-                        <span class="item-description">
-                            Produtos
-                        </span>
-                    </a>
-                </li>
-    
-                <li class="side-item">
-                    <a href="#">
-                        <i class="fa-solid fa-image"></i>
-                        <span class="item-description">
-                            Imagens
-                        </span>
-                    </a>
-                </li>
-    
-                <li class="side-item">
-                    <a href="#">
-                        <i class="fa-solid fa-gear"></i>
-                        <span class="item-description">
-                            Configurações
-                        </span>
-                    </a>
-                </li>
-            </ul>
-    
-            <button id="open_btn">
-                <i id="open_btn_icon" class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
 
-        <div id="logout">
-            <button id="logout_btn">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="item-description">
-                    Logout
-                </span>
-            </button>
-        </div>
-    </nav>
+            <div id="logout">
+                <button id="logout_btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span class="item-description">
+                        Logout
+                    </span>
+                </button>
+            </div>
+        </nav>
 
-    <main>
-        <h1>Título</h1>
-    </main>
+        <main>
+            <router-view/>
+        </main>
     </div>
-
 </template>
+
 <style>
-    
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
@@ -106,17 +58,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+.body {
     display: flex;
     min-height: 100vh;
     background-color: #e3e9f7;
-}
-
-main {
-    padding: 20px;
-    position: fixed;
-    z-index: 1;
-    padding-left: calc(82px + 20px);
 }
 
 #sidebar {
@@ -264,19 +209,42 @@ main {
     justify-content: flex-start;
     gap: 14px;
 }
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    z-index: 1;
+    background-color: #f7f7f7;
+}
 </style>
+
 <script lang="ts">
 import Vue from 'vue';
 export default Vue.extend({
+    name: "SideBar",
     data(){
         return{
-
+            menus:[
+                {
+                    titulo: "DataTable",
+                    icone: "fa-solid fa-chart-line",
+                    destino: "DataTable"
+                },
+                {
+                    titulo: "TreeView",
+                    icone: "fa-solid fa-tree",
+                    destino: "home"
+                },
+            ]
         }
     },
-    mounted(){
-        document.getElementById('open_btn').addEventListener('click',  () => {
-        document.getElementById('sidebar').classList.toggle('open-sidebar');
-    });
+    methods:{
+        abrirFecharMenu(){
+           var sideBar = document.getElementById('sidebar');
+           if(sideBar != null){
+                sideBar.classList.toggle('open-sidebar');
+           }
+        }
     }
 })
 </script>
