@@ -65,6 +65,10 @@
                 </div>
             </div>
         </div>
+        <div >
+            <h3>Foi usado o 'flex-direction' para alinhar a direção dos items</h3>
+            
+        </div>
     </div>
     
   </template>
