@@ -98,8 +98,23 @@
         </div>
         <h3>Aqui foi usado o flex-wrap, flex-direction,</h3>
         <h3>Pode usar o: flex-flow para juntar as duas propriedades</h3>
-    <h3>Foi usado o align-content, que combinado com o flex-wrap define o alinhamento das linhas</h3>
-    <h3>align-items nesse caso determina também como os items como um todo são alinhados no container</h3>
+        <h3>Foi usado o align-content, que combinado com o flex-wrap define o alinhamento das linhas</h3>
+        <h3>align-items nesse caso determina também como os items como um todo são alinhados no container</h3>
+        <br />
+        <div class="linha">
+            <div class="quadrado_maior_teste">
+                <div class="coluna esquerda">
+                    <div>a</div>
+                    <div>a</div>
+                    <div>a</div>
+                </div>
+                <div class="coluna direita">
+                    <div>b</div>
+                    <div>b</div>
+                    <div>b</div>
+                </div>
+            </div>
+        </div>
     </div>
     
   </template>
@@ -130,6 +145,21 @@
     /*flex-flow: column wrap  */
     /* Pode usar tmb o align-content */
     align-content: space-around
+  }
+  .quadrado_maior_teste{
+    margin: 2px;
+    width: 300px;
+    height: 300px;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+  }
+  .coluna{
+    border: 1px dotted black;
+    width: 50%;
+    height: 100%;
   }
   .qd{
     width: 50px;
