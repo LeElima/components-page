@@ -69,6 +69,37 @@
             <h3>Foi usado o 'flex-direction' para alinhar a direção dos items</h3>
             
         </div>
+        <br />
+        <div class="linha">
+            <div class="quadrado_maior_wrap">
+                
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+                    <div class="qd"></div>
+            </div>
+        </div>
+        <h3>Aqui foi usado o flex-wrap, flex-direction,</h3>
+        <h3>Pode usar o: flex-flow para juntar as duas propriedades</h3>
+    <h3>Foi usado o align-content, que combinado com o flex-wrap define o alinhamento das linhas</h3>
+    <h3>align-items nesse caso determina também como os items como um todo são alinhados no container</h3>
     </div>
     
   </template>
@@ -88,8 +119,23 @@
     flex-direction: column;
     justify-content: space-between;
   }
-    
-     
+  .quadrado_maior_wrap{
+    margin: 2px;
+    width: 300px;
+    height: 300px;
+    background-color: orange;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /*flex-flow: column wrap  */
+    /* Pode usar tmb o align-content */
+    align-content: space-around
+  }
+  .qd{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+  }
     .linha{
         display: flex;
         justify-content: space-evenly;
@@ -151,6 +197,12 @@
         display: flex;
         justify-content: space-evenly;
         flex-direction: row-reverse;
+    }
+    .especial{
+        order: -1;
+    }
+    .especial2{
+        align-self: end
     }
 </style>
 <script lang="ts">
