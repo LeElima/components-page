@@ -235,6 +235,11 @@ export default Vue.extend({
                     icone: "fa-solid fa-tree",
                     destino: "home"
                 },
+                {
+                    titulo: "EstudoCSS",
+                    icone: "fa-solid fa-tree",
+                    destino: "EstudoCSS"
+                },
             ]
         }
     },
