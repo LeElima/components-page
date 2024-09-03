@@ -233,7 +233,7 @@ export default Vue.extend({
                 {
                     titulo: "TreeView",
                     icone: "fa-solid fa-tree",
-                    destino: "home"
+                    destino: "DataTree"
                 },
                 {
                     titulo: "EstudoCSS",
