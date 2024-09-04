@@ -240,6 +240,11 @@ export default Vue.extend({
                     icone: "fa-solid fa-tree",
                     destino: "EstudoCSS"
                 },
+                {
+                    titulo: "14-Longest Common Prefix",
+                    icone: "fa-solid fa-tree",
+                    destino: "LongestCommonPrefix"
+                },
             ]
         }
     },
