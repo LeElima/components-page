@@ -245,6 +245,11 @@ export default Vue.extend({
                     icone: "fa-solid fa-tree",
                     destino: "LongestCommonPrefix"
                 },
+                {
+                    titulo: "23 - Remove Element",
+                    icone: "fa-solid fa-tree",
+                    destino: "RemoveElement"
+                },
             ]
         }
     },
