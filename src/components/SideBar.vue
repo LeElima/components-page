@@ -250,6 +250,11 @@ export default Vue.extend({
                     icone: "fa-solid fa-tree",
                     destino: "RemoveElement"
                 },
+                {
+                    titulo: "23 - Remove Element",
+                    icone: "fa-solid fa-tree",
+                    destino: "InfiniteScrolling"
+                },
             ]
         }
     },
