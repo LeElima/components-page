@@ -251,9 +251,14 @@ export default Vue.extend({
                     destino: "RemoveElement"
                 },
                 {
-                    titulo: "23 - Remove Element",
+                    titulo: "Infinite Scrolling",
                     icone: "fa-solid fa-tree",
                     destino: "InfiniteScrolling"
+                },
+                {
+                    titulo: "Curriculum",
+                    icone: "fa-solid fa-tree",
+                    destino: "Curriculum"
                 },
             ]
         }
